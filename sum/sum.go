@@ -13,8 +13,12 @@ func SumAllTails(numbersToSum ...[]int) []int {
 	var sums []int // init a slice
 
 	for _, numbers := range numbersToSum { // loop through
-		tail := numbers[1:] // syntax is slice[low:high], whever side is left out is the side which is captured
-		sums = append(sums, Sum(tail)) // append each sum, 
+		if len(numbers) == 0 {
+			sums = append(sums, 0)
+		} else {
+			tail := numbers[1:] // syntax is slice[low:high], whever side is left out is the side which is captured
+			sums = append(sums, Sum(tail)) // append each sum, 
+		}
 	}
 
 	return sums
