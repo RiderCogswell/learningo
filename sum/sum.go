@@ -9,11 +9,12 @@ func Sum(numbers []int) int { // arrays lengths must be declared on init, so ins
 	return sum
 }
 
-func SumAll(numbersToSum ...[]int) []int {
+func SumAllTails(numbersToSum ...[]int) []int {
 	var sums []int // init a slice
 
 	for _, numbers := range numbersToSum { // loop through
-		sums = append(sums, Sum(numbers)) // append each sum, 
+		tail := numbers[1:] // syntax is slice[low:high]
+		sums = append(sums, Sum(tail)) // append each sum, 
 	}
 
 	return sums
