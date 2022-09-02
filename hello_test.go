@@ -14,11 +14,12 @@ func TestHello(t *testing.T) {
 	t.Run("say 'hello, World' when an empty string is supplied", func(t *testing.T) {
 		got := Hello("")
 		want := "hello, World"
-		assertCorrectMessage(t, got, want)
+		assertCorrectMessage(t, got, want) // because we called t.Helper(), the test suite tells us the issue is on this line, instead of in the helper function
+	})
 }
 
 func assertCorrectMessage(t testing.TB, got, want string) {
-	t.Helper()
+	t.Helper() // we need to call this to let the test
 	if got != want {
 		t.Errorf("got %q want %q", got, want)
 	}
